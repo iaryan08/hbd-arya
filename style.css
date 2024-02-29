@@ -1,248 +1,98 @@
-:root {
-  --balloon1-bg-color: #eaeaeae6;
-  --balloon2-bg-color: #e8dab2e6;
-  --balloon3-bg-color: #dd6e42e3;
-  --balloon4-bg-color: #4f6d7ad6;
-  --balloon5-bg-color: #eaeaeae6;
-  --bg-color: #c0d6df;
+@font-face {
+  /*font from https://codepen.io/Nimoi/pen/keaFn*/
+  font-family: "Monoton";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Monoton"), local("Monoton-Regular"),
+    url(https://themes.googleusercontent.com/static/fonts/monoton/v4/AKI-lyzyNHXByGHeOcds_w.woff)
+      format("woff");
+}
 
-  --balloon-anim-1: balloon1 15s ease infinite;
-  --balloon-anim-2: balloon2 5s ease infinite;
-  --balloon-anim-3: balloon3 10s ease infinite;
-  --balloon-anim-4: balloon4 5s ease infinite;
-  --balloon-anim-5: balloon5 15s ease infinite;
-  --balloon-anim-6: balloon7 5s ease infinite;
+
+/* 
+Ziggurat
+#BED4E2
+
+Santa Fe
+#B0705A
+
+Lynch
+#5D7D8D
+
+Oslo Gray
+#849494
+*/
+
+* {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--bg-color);
+  background-color: #bed4e2;
+  opacity: 0.8;
+  background: radial-gradient(
+      circle,
+      transparent 20%,
+      #bed4e2 20%,
+      #bed4e2 80%,
+      transparent 80%,
+      transparent
+    ),
+    radial-gradient(
+        circle,
+        transparent 20%,
+        #bed4e2 20%,
+        #bed4e2 80%,
+        transparent 80%,
+        transparent
+      )
+      25px 25px,
+    linear-gradient(#5d7d8d 2px, transparent 2px) 0 -1px,
+    linear-gradient(90deg, #5d7d8d 2px, #bed4e2 2px) -1px 0;
+  background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+
+  overflow: hidden;
+}
+
+.text {
   position: absolute;
-  top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;
-  padding: 50px;
-  min-width: 600px;
+  top: 0;
+  width: 100vw;
+  font-size: 5vw;
+  text-align: center;
+  margin-top: calc(50vh - 0.5em);
+  font-family: Monoton;
+  color: hsla(15, 35%, 52%, 0.5);
+  z-index: -1;
 }
 
-.happy,
-.birthday {
-  flex-direction: row;
-  display: flex;
-  justify-content: center;
-}
-.name {
-  display: flex;
-  justify-content: center;
-  padding: 50px;
-  font-size: 80px;
-  color: #4f6d7a;
-  font-family: "Comic Sans MS", Arial, Helvetica, sans-serif;
-}
-
-.balloon {
-  width: 76px;
-  height: 100px;
-  margin: 10px;
-  border-radius: 80%;
-  position: relative;
-}
-
-.balloon::after {
-  position: absolute;
-  bottom: -16px;
-  left: 31px;
-  content: "\2713";
-  transform: rotate(180deg);
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.happy .balloon::before,
-.birthday .balloon::before {
-  position: absolute;
-  top: calc(50% - 15px);
-  left: calc(50% - 10px);
-  font-size: 30px;
-  color: #4f6d7a;
-  font-family: "Comic Sans MS", Arial, Helvetica, sans-serif;
-}
-
-.happy .balloon:nth-child(1)::before {
-  content: "H";
-}
-.happy .balloon:nth-child(2)::before {
-  content: "A";
-}
-.happy .balloon:nth-child(3)::before {
-  content: "P";
-}
-.happy .balloon:nth-child(4)::before {
-  content: "P";
-}
-.happy .balloon:nth-child(5)::before {
-  content: "Y";
-}
-.birthday .balloon:nth-child(1)::before {
-  content: "B";
-}
-.birthday .balloon:nth-child(2)::before {
-  content: "I";
-}
-.birthday .balloon:nth-child(3)::before {
-  content: "R";
-}
-.birthday .balloon:nth-child(4)::before {
-  content: "T";
-}
-.birthday .balloon:nth-child(5)::before {
-  content: "H";
-}
-.birthday .balloon:nth-child(6)::before {
-  content: "D";
-}
-.birthday .balloon:nth-child(7)::before {
-  content: "A";
-}
-.birthday .balloon:nth-child(8)::before {
-  content: "Y";
-}
-@keyframes balloon1 {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(-10deg);
-  }
-  50% {
-    transform: translate(0, 30px) rotate(10deg);
-  }
-}
-
-@keyframes balloon2 {
-  0%,
-  100% {
-    transform: translate(-20px, 40px) rotate(15deg);
-  }
-  50% {
-    transform: translate(0, -10px) rotate(-5deg);
-  }
-}
-
-@keyframes balloon3 {
-  0%,
-  100% {
-    transform: translate(-30px, 0) rotate(-10deg);
-  }
-  50% {
-    transform: translate(0, -20px) rotate(20deg);
-  }
-}
-
-@keyframes balloon4 {
-  0%,
-  100% {
-    transform: translate(-10px, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate(0, 20px) rotate(30deg);
-  }
-}
-
-@keyframes balloon5 {
-  0%,
-  100% {
-    transform: translate(10px, 0) rotate(20deg);
-  }
-  50% {
-    transform: translate(0, 30px) rotate(-20deg);
-  }
-}
-@keyframes balloon6 {
-  0%,
-  100% {
-    transform: translate(-10px, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate(0, 20px) rotate(30deg);
-  }
-}
-
-@keyframes balloon7 {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(15deg);
-  }
-  50% {
-    transform: translate(0, 0) rotate(-15deg);
-  }
-}
-.balloon1 {
-  background: var(--balloon1-bg-color);
-  box-shadow: inset 10px 10px 10px #c7c3c3e6;
-}
-.balloon1::after {
-  color: var(--balloon1-bg-color);
-}
-
-.balloon2 {
-  background: var(--balloon2-bg-color);
-  box-shadow: inset 10px 10px 10px #d5c7a1;
-}
-.balloon2::after {
-  color: var(--balloon2-bg-color);
-}
-
-.balloon3 {
-  background: var(--balloon3-bg-color);
-  box-shadow: inset 10px 10px 10px #cf6840;
-}
-.balloon3::after {
-  color: var(--balloon3-bg-color);
-}
-
-.balloon4 {
-  background: var(--balloon4-bg-color);
-  box-shadow: inset 10px 10px 10px #4f6d7a;
-}
-.balloon4::after {
-  color: var(--balloon4-bg-color);
-}
-.balloon5 {
-  background: var(--balloon5-bg-color);
-  box-shadow: inset 10px 10px 10px #cbc8c8;
-}
-.balloon5::after {
-  color: var(--balloon5-bg-color);
-}
-
-.balloon-anim1 {
-  animation: var(--balloon-anim-1);
-}
-.balloon-anim2 {
-  animation: var(--balloon-anim-2);
-}
-.balloon-anim3 {
-  animation: var(--balloon-anim-3);
-}
-.balloon-anim4 {
-  animation: var(--balloon-anim-4);
-}
-.balloon-anim5 {
-  animation: var(--balloon-anim-5);
-}
-.balloon-anim6 {
-  animation: var(--balloon-anim-6);
-}
-
-/* /* styles.css */
+/* Birthday Card */
 
 .birthday-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: hsla(351, 78%, 71%, 0.85);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: -1;
+  opacity: 0;
+  animation: card 1.5s ease-in-out 0.2s forwards;
+}
+@keyframes card {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 img {
@@ -250,21 +100,21 @@ img {
   max-height: 200px;
   object-fit: cover;
   border-radius: 5px;
-  animation: fadeIn 2s ease infinite;
+  animation: fadeIn 2s ease;
 }
 
 h1 {
   font-size: 28px;
-  color: #333;
+  color: #B6E2D3;
   margin-top: 20px;
-  animation: slideInLeft 1.5s ease infinite;
+  animation: slideInLeft 1.5s ease;
 }
 
 p {
   font-size: 16px;
-  color: #666;
+  color: #FAE8E0;
   margin-top: 10px;
-  animation: slideInRight 1.5s ease infinite;
+  animation: slideInRight 1.5s ease;
 }
 
 @keyframes fadeIn {
